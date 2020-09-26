@@ -16,7 +16,7 @@
     "@angular/common": "^10.1.3",
     "@angular/compiler": "^10.1.3",
     "@angular/core": "^10.1.3",
-    "@angular/flex-layout": "^6.0.0-beta.18",
+    "@angular/flex-layout": "github:angular/flex-layout-builds",
     "@angular/forms": "^10.1.3",
     "@angular/http": "^6.1.0",
     "@angular/material": "^6.4.7",
