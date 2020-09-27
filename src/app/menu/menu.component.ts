@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Dish } from './../shared/dish';
 import { from } from 'rxjs';
-
 const DISHES : Dish[] =[
   {
     id: '0',
