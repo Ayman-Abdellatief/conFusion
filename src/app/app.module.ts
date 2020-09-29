@@ -8,6 +8,7 @@ import {MatGridListModule} from '@angular/material/Grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import { AppComponent } from './app.component';
+import { DishService } from './services/dish.service';
 
 import { from } from 'rxjs';
 
@@ -22,7 +23,7 @@ import { DishdetailComponent } from './dishdetail/dishdetail.component';
     DishdetailComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexLayoutModule,
@@ -31,7 +32,9 @@ import { DishdetailComponent } from './dishdetail/dishdetail.component';
     MatCardModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [
+    DishService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
