@@ -19,8 +19,10 @@ import { DishService } from './services/dish.service';
 import {AppRoutingModule} from './app-routing/app-routing.module'
 import { from } from 'rxjs';
 import { PromotionService } from './services/promotion.service';
+import { LeaderService } from './services/leader.service';
 import 'hammerjs';
-
+import { LoginComponent } from './login/login.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import 'hammerjs';
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    LoginComponent
   ],
   imports: [
 BrowserModule,
@@ -42,11 +45,17 @@ BrowserModule,
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule
   ],
   providers: [
     DishService,
-    PromotionService
+    PromotionService,
+    LeaderService,
+    
+  ],
+  entryComponents:[
+    LoginComponent
   ],
   bootstrap: [AppComponent]
 })

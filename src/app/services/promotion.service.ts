@@ -10,7 +10,7 @@ export class PromotionService {
 
 
   
-  getPRomotions(): Promotion[]{
+  getPromotions(): Promotion[]{
     return PROMOTIONS;
   }
 
