@@ -6,7 +6,13 @@ import {MatListModule} from '@angular/material/list';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {MatGridListModule} from '@angular/material/Grid-list';
 import {MatCardModule} from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
+import {AppRoutingModule} from './app-routing/app-routing.module'
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
@@ -16,13 +22,13 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { DishService } from './services/dish.service';
-import {AppRoutingModule} from './app-routing/app-routing.module'
+
 import { from } from 'rxjs';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 import 'hammerjs';
 import { LoginComponent } from './login/login.component';
-import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -41,12 +47,16 @@ BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexLayoutModule,
+    FormsModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
     AppRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [
     DishService,

@@ -7,10 +7,15 @@ import { from } from 'rxjs';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  user ={username:'',password:'',remember:false};
 
-  constructor() { }
+  constructor(public dialogRef:MatDialogRef<LoginComponent>) { }
 
   ngOnInit(): void {
+  }
+  onSubmit(){
+    console.log('user: ',this.user);
+    this.dialogRef.close();
   }
 
 }
