@@ -22,7 +22,7 @@ import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 import 'hammerjs';
 import { LoginComponent } from './login/login.component';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -51,8 +51,7 @@ BrowserModule,
   providers: [
     DishService,
     PromotionService,
-    LeaderService,
-    
+    LeaderService
   ],
   entryComponents:[
     LoginComponent
