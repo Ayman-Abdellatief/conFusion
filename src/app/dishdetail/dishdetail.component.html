@@ -13,7 +13,7 @@
     <mat-Card>
         <mat-card-header>
             <mat-card-title>
-                <h3>{{dish.name | uppercase}}</h3>
+                <h3 *ngIf="dish">{{dish.name | uppercase}}</h3>
             </mat-card-title>
         </mat-card-header>
         <img height="550px" width="550px" mat-card-image src={{dish.image}} alt={{dish.name}}>
@@ -37,4 +37,9 @@
      <p mat-line><span>-- {{comments.author}} {{comments.date | date}}</span> </p>
     </mat-list-item>
     </mat-list>
+
+</div>
+<div [hidden]="dish">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
 </div>
