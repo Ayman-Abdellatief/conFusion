@@ -16,7 +16,7 @@
                 <h3 *ngIf="dish">{{dish.name | uppercase}}</h3>
             </mat-card-title>
         </mat-card-header>
-        <img height="550px" width="550px" mat-card-image src={{dish.image}} alt={{dish.name}}>
+        <img height="550px" width="550px" mat-card-image src="{{BaseURL +dish.image}}" alt={{dish.name}}>
         <mat-card-container>
     <p>{{dish.description}}</p>
         </mat-card-container>
@@ -41,10 +41,42 @@
      <p mat-line><span>{{comments.rating}} Stars</span></p>
      <p mat-line><span>-- {{comments.author}} {{comments.date | date}}</span> </p>
     </mat-list-item>
+    <mat-list-item *ngIf="feedbackFormdetail.valid">
+        <p matLine>{{feedbackFormdetail.value.comment}}</p>
+        <p matLine>{{feedbackFormdetail.value.rating}} Stars</p>
+        <p matLine>-- {{feedbackFormdetail.value.author}} {{date | date}}</p>
+      </mat-list-item>
     </mat-list>
-
+ 
+        <form novalidate [formGroup]="feedbackFormdetail" #fform="ngForm" (ngSubmit)="onSubmit()">
+        
+            <p>
+                <mat-form-field class="half-width">
+                  <input matInput formControlName="author" placeholder="Name" type="text" required>
+                  <mat-error *ngIf="formErrors.author">{{ formErrors.author}}</mat-error>
+                </mat-form-field>
+               
+                </p>
+                <p>
+                    <mat-slider formControlName="rating" min="1" max="5" step="1" value={{feedbackFormdetail.value.rating}} thumbLabel tickInterval="1">
+                      Ratings
+                    </mat-slider>
+                  </p>
+               
+                <p>
+                    <mat-form-field class="full-width">
+                  <textarea matInput formControlName="comment" placeholder="Your comment"type="text" required  rows=12 ></textarea>
+                  <mat-error *ngIf="formErrors.comment">{{ formErrors.comment}}</mat-error>
+                </mat-form-field>
+              </p>
+              <button type="submit" mat-button class="background-primary text-floral-white"
+              [disabled]="feedbackFormdetail.invalid">Submit</button>
+        </form>
+    
 </div>
+
 <div [hidden]="dish">
     <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
   </div>
+ 
 </div>

@@ -16,6 +16,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatSliderModule} from '@angular/material/slider';
 import {AppRoutingModule} from './app-routing/app-routing.module'
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -26,7 +27,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { DishService } from './services/dish.service';
-
+import {HttpClientModule} from '@angular/common/http';
+import { baseURL } from './shared/baseurl';
 import { from } from 'rxjs';
 import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
@@ -53,6 +55,7 @@ BrowserModule,
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatListModule,
     MatGridListModule,
     MatCardModule,
@@ -64,12 +67,14 @@ BrowserModule,
     MatInputModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSliderModule
   ],
   providers: [
     DishService,
     PromotionService,
-    LeaderService
+    LeaderService,
+    {provide:'baseURL',useValue:baseURL}
   ],
   entryComponents:[
     LoginComponent
