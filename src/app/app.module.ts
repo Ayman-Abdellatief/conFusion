@@ -34,6 +34,7 @@ import { PromotionService } from './services/promotion.service';
 import { LeaderService } from './services/leader.service';
 import 'hammerjs';
 import { LoginComponent } from './login/login.component';
+import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
 
 
 @NgModule({
@@ -74,6 +75,7 @@ BrowserModule,
     DishService,
     PromotionService,
     LeaderService,
+    ProcessHTTPMsgService,
     {provide:'baseURL',useValue:baseURL}
   ],
   entryComponents:[
