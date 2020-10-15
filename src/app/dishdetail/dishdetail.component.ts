@@ -22,11 +22,11 @@ export class DishdetailComponent implements OnInit {
   feedbackFormdetail: FormGroup;
   feedbackdetail: Feedback;
   contactType = ContactType;
-  comments :Comment;
+  comment :Comment;
   date = new Date();
   newDate= this.date.toISOString();
 @ViewChild('fform') FeedbackFormDirective;
-
+dishcopy:Dish;
 
 formErrors = {
   'author': '',
@@ -59,8 +59,9 @@ validationMessages = {
      createForm() {
       this.feedbackFormdetail = this.fb.group({
         author: ['',[Validators.required,Validators.minLength(2)]],
-        comment:  ['',Validators.required],
-        rating:  ['5']
+        rating:  ['5'],
+        comment:  ['',Validators.required]
+       
       });
   
       this.feedbackFormdetail.valueChanges
@@ -90,27 +91,38 @@ validationMessages = {
     }
   
   
-    onSubmit() {
-      this.comments  = this.feedbackFormdetail.value;
-      console.log(this.comments );
-      this.feedbackFormdetail.reset({
-        author:'',
-        Comment:'',
-        rating:'5'
-      });
-          this.FeedbackFormDirective.resetForm();
-          this.comments.date = this.newDate;
-          this.dish.comments.push(this.comments);
-    }
 
 
   ngOnInit() {
     this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
-    this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
-    .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); },
-    errmess => this.errMess = <any>errmess);
+    this.route.params
+    .pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
+    .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); },
+      errmess => this.errMess = <any>errmess )
     }
 
+    
+    onSubmit() {
+      this.comment = this.feedbackFormdetail.value;
+      console.log(this.comment );
+      this.comment.date = this.newDate;
+      console.log(this.comment)
+      this.dishcopy.comments.push(this.comment);
+      this.dishservice.putDish(this.dishcopy)
+        .subscribe(dish => {
+          this.dish = dish; this.dishcopy = dish;
+        },
+        errmess => { this.dish = null; this.dishcopy = null; this.errMess = <any>errmess; });
+      this.FeedbackFormDirective.resetForm();
+      this.feedbackFormdetail.reset({
+        author:'',
+        rating:'5',
+        Comment:''
+        
+      });
+         
+         
+    }
     setPrevNext(dishId: string) {
       const index = this.dishIds.indexOf(dishId);
       this.prev = this.dishIds[(this.dishIds.length + index - 1) % this.dishIds.length];
