@@ -35,6 +35,7 @@ import { LeaderService } from './services/leader.service';
 import 'hammerjs';
 import { LoginComponent } from './login/login.component';
 import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
+import { HeighlightDirective } from './directives/heighlight.directive';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { ProcessHTTPMsgService } from './services/process-httpmsg.service';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HeighlightDirective
   ],
   imports: [
 BrowserModule,
