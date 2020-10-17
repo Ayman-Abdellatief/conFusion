@@ -63,7 +63,7 @@
 
       
       
-        <img matListAvatar  src={{Leader.image}} alt={{Leader.name}}>
+        <img  matListAvatar  src="{{BaseURL +Leader.image}}"   alt={{Leader.name}}>
    
         <p matLine>
          {{Leader.abbr}}  {{Leader.name}} 
@@ -75,8 +75,12 @@
         </p>
       </mat-list-item>
     </mat-list>
-    <div [hidden]="leaders">
+    <div [hidden]="leaders || leaderErrMess">
       <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+      <div fxFlex *ngIf="leaderErrMess">
+        <h2>Error</h2>
+        <h4>{{leaderErrMess}}</h4>
+      </div>
     </div>
   </div>
   </div>

@@ -36,6 +36,8 @@ export class DishdetailComponent implements OnInit {
   comment :Comment;
   date = new Date();
   newDate= this.date.toISOString();
+
+  
 @ViewChild('fform') FeedbackFormDirective;
 dishcopy:Dish;
 visibility = 'shown';
